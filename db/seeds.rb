@@ -21,7 +21,7 @@ end
 
 
 
-20.times do 
+6.times do 
   user = User.all.sample
   Gossip.create!(
     title: Faker::Book.title,

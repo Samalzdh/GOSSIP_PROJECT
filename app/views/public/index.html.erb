@@ -5,6 +5,10 @@
     .background {
       background: linear-gradient(to bottom, #FFC0CB, #FF69B4); 
     }
+    a {
+    text-decoration: none;
+    color: white;
+}
   </style>
 
   
@@ -20,62 +24,29 @@
                     <p class="fs-5 mb-4">sur le seul et unique gossip project </p>
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                         <button type="button" class="btn btn-outline-light btn-lg px-4 me-sm-3 fw-bold"> <a href="/newgossip">Nouveau potin</a></button>
-                        <button type="button" class="btn btn-outline-light btn-lg px-4 me-sm-3 fw-bold">liste des potins</button>
+                        <button type="button" class="btn btn-outline-light btn-lg px-4 me-sm-3 fw-bold"><a href="/allgossips">liste des potins</a></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-<div class="album py-5 bg-dark">
-        <div class="container">
+<div class="row px-4 py-2">
+  <% Gossip.all.each do |gossip|%> 
+    <div class="col-sm-4 my-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text">Author: <%= gossip.user.first_name %></p>
+          <div class="text-end">
+            <%= link_to "See More", gossip_path(gossip.id), class:"btn btn-pink"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+﻿
 
-                <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <%= image_tag("blair et chuck", class: "card-img-top", alt: "Image de Chuck", style: "height: 225px; width: 100%; display: flex;" ) %>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <%@gossips%>
-              <div class="card mb-4 box-shadow">
-              <%= image_tag("blair et serena", class: "card-img-top", alt: "Image de Chuck", style: "height: 225px; width: 100%; display: flex;" ) %>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <%= image_tag("gossip 3", class: "card-img-top", alt: "Image de Chuck", style: "height: 225px; width: 100%; display: flex;" ) %>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
 </body>
 

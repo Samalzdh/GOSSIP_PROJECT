@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get 'contact' , to: 'public#contact'
   get 'team' , to: 'public#team'
   get 'welcome' , to: 'public#welcome'
+  get 'user'  , to: 'user#users', as: 'user'
   
   get 'allgossips', to: 'gossips#allgossips'
   get 'gossip/:id' ,to: 'gossips#gossip' , as: 'gossip'
+
   
   
 
