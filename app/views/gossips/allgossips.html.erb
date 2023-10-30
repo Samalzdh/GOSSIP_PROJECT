@@ -1,0 +1,11 @@
+<h2>Derniers Gossips</h2>
+<%= Gossip.all.each do |gossip| %>
+<div class="gossip">
+  <p><%= gossip.user.first_name%><p>
+  <p><%=gossip.title%><p>
+  <%= link_to "Voir plus ",gossip_path(gossip.id)%>
+  <p><%=gossip.content%><p> 
+  <br>
+  <br>
+</div>
+<% end %>
