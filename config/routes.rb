@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
   root to: 'public#index'
-  get 'contact' , to: 'public#contact'
-  get 'team' , to: 'public#team'
-  get 'welcome' , to: 'public#welcome'
-  get 'user'  , to: 'user#users', as: 'user'
+  get '/contact' , to: 'public#contact'
+  get '/team' , to: 'public#team'
+  get '/welcome' , to: 'public#welcome'
+  get '/user'  , to: 'user#show', as: 'user'
   
-  get 'allgossips', to: 'gossips#allgossips'
-  get 'gossip/:id' ,to: 'gossips#gossip' , as: 'gossip'
+  # get '/gossips', to: 'gossips#index'
+  # get '/gossips/:id' ,to: 'gossips#show' , as: 'gossip'
 
-  
+  resources :gossips
   
 
 

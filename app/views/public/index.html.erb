@@ -16,37 +16,40 @@
 
 <body>
 <!-- Hero -->
-    <div class="hero background">
-        <div class=" text-secondary px-4 py-5 text-center text-black">
-            <div class="py-5">
-                <h1 class="display-5 fw-bold text-black">Bienvenu</h1>
-                <div class="col-lg-6 mx-auto">
-                    <p class="fs-5 mb-4">sur le seul et unique gossip project </p>
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <button type="button" class="btn btn-outline-light btn-lg px-4 me-sm-3 fw-bold"> <a href="/newgossip">Nouveau potin</a></button>
-                        <button type="button" class="btn btn-outline-light btn-lg px-4 me-sm-3 fw-bold"><a href="/allgossips">liste des potins</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="hero background">
+    <div class=" text-secondary px-4 py-5 text-center text-black">
+      <div class="py-5">
+          <h1 class="display-5 fw-bold text-black">Bienvenue</h1>
+          <div class="col-lg-6 mx-auto">
+              <p class="fs-5 mb-4">sur le seul et unique gossip project </p>
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+              <button type="button" class="btn btn-outline-light btn-lg px-4 me-sm-3 fw-bold">
+                <%= link_to("Nouveau potin", new_gossip_path) %>
+              </button>                         <br>
+    
+                  <button type="button" class="btn btn-outline-light btn-lg px-4 me-sm-3 fw-bold"><a href="/gossips">liste des potins</a></button>
+              </div>
+          </div>
+      </div>
     </div>
+  </div>
 
-<div class="row px-4 py-2">
-  <% Gossip.all.each do |gossip|%> 
-    <div class="col-sm-4 my-2">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= gossip.title %></h5>
-          <p class="card-text">Author: <%= gossip.user.first_name %></p>
-          <div class="text-end">
-            <%= link_to "See More", gossip_path(gossip.id), class:"btn btn-pink"%>
+  <div class="row px-4 py-2">
+    <% Gossip.all.each do |gossip|%> 
+      <div class="col-sm-4 my-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= gossip.title %></h5>
+            <p class="card-text">Author: <%= gossip.user.first_name %></p>
+            <div class="text-end">
+              <%= link_to "See More", gossip_path(gossip.id), class:"btn btn-pink"%>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
-﻿
+    <% end %>
+  </div>
+  ﻿
 
 </body>
 

@@ -12,7 +12,7 @@
     <h2 class="display-4 font-italic"> Auteur : <%= @gossip.user.first_name %> </h2>
     <p class="lead my-3">
       <%= @gossip.content %><br>
-      Crée le : <%= @gossip.created_at %>
+      Crée le : <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %>
     </p>
     <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
   </div>
