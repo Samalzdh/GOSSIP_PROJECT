@@ -1,0 +1,51 @@
+<style>
+  .items-align-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Optionally, you can set a minimum height to center vertically. */
+  }
+  .titre{
+    font-size:3em;
+    font-family: Copperplate, Papyrus, fantasy;
+    
+  }
+</style>
+
+
+
+<div class="items-align-center" >
+  <h1 class="titre" >Modifier un gossip</h1>
+  <div class="container m-5" >
+    <%= form_for @gossip do |f| %>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header bg-dark text-white"><h4>Modifie ton potin<h4> </div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <h4><label for="name">Titre</label><h4>
+                  <div class="field">
+                    <%= f.text_field :title, class: 'form-control', placeholder: 'Entre 3 et 24 caractères', required: true %>
+                  </div>  
+                </div>
+                <div class="form-group">
+                  <h4><label for="message">Potin</label><h4>
+                  <div class="field">
+                    <%= f.text_area :content, class: 'form-control', rows: 6, required: true  %>
+                  </div>                                 
+                <div class="mx-auto">
+                  <%= f.submit "Sauvegarder la modification", class: "btn btn-dark m-2" %>
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>    
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,17 +1,20 @@
 
-<div class="col-12 text-center">
-  <% Gossip.all.each do |gossip| %>
-    <div class="card">
-      <div class="card-header">
-        <h5 class="blog-header-logo text-dark">Gossip n°<%= gossip.id %></h5>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <% Gossip.all.each do |gossip| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card m-3">
+          <div class="card-body">
+            <h5 class="card-title">Gossip n°<%= gossip.id %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Par <%= gossip.user.first_name %></h6>
+            <p class="card-text"><%= gossip.title %></p>
+
+            <%= button_to "Voir plus", gossip_path(gossip.id), method: :get, class: "btn btn-outline-primary btn-sm m-1" %>
+            <%= button_to "Voir l'auteur", user_gossip_path(gossip.user, gossip), method: :get, class: "btn btn-outline-warning btn-sm m-1" %>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title"><%= gossip.user.first_name%></h5>
-        <p class="card-text"><%=gossip.title%></p>
-          <%= link_to "Voir plus ",gossip_path(gossip.id)%>
-        <br>
-        <br>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

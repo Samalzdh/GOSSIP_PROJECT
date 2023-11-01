@@ -4,13 +4,19 @@ Rails.application.routes.draw do
   get '/contact' , to: 'public#contact'
   get '/team' , to: 'public#team'
   get '/welcome' , to: 'public#welcome'
-  get '/user'  , to: 'user#show', as: 'user'
+  
   
   # get '/gossips', to: 'gossips#index'
   # get '/gossips/:id' ,to: 'gossips#show' , as: 'gossip'
 
   resources :gossips
-  
+  resources :users
+  resources :cities
+
+  resources :users do
+    resources :gossips
+  end
+  # get '/user'  , to: 'user#show', as: 'user'
 
 
   # get 'New%gossip' , to: 'gossip#newgossip'
