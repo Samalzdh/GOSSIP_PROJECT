@@ -11,7 +11,7 @@
             <p class="card-text"><%= gossip.title %></p>
 
             <%= button_to "Voir plus", gossip_path(gossip.id), method: :get, class: "btn btn-outline-primary btn-sm m-1" %>
-            <%= button_to "Voir l'auteur", user_gossip_path(gossip.user, gossip), method: :get, class: "btn btn-outline-warning btn-sm m-1" %>
+            <%= button_to "Voir l'auteur", user_path(gossip.user.id), method: :get, class: "btn btn-outline-warning btn-sm m-1" %>
           </div>
         </div>
       </div>

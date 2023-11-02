@@ -15,11 +15,18 @@
 </head>
 
 <body>
+  <div>
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <p id=notice> <%= notice %></p>
+    </div>
+  <% end %>
+</div>
 <!-- Hero -->
   <div class="hero background">
     <div class=" text-secondary px-4 py-5 text-center text-black">
       <div class="py-5">
-          <h1 class="display-5 fw-bold text-black">Bienvenue</h1>
+          <h1 class="display-5 fw-bold text-black">Bienvenue <% if logged_in? == true %>, <%= current_user.first_name %> <% end %></h1>
           <div class="col-lg-6 mx-auto">
               <p class="fs-5 mb-4">sur le seul et unique gossip project </p>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">

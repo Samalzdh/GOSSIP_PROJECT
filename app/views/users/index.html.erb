@@ -72,7 +72,7 @@
             <% if user.gossips.any? %>
               <p><%= link_to user.gossips.sample.title, user_gossip_path(user, user.gossips.sample) %></p>
             <% else %>
-              <p>No gossips available for this user.</p>
+              <p>Aucun gossips</p>
             <% end %>
           </div>
         </div>

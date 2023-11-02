@@ -12,7 +12,7 @@
   <link href="../../assets/stylesheets/application.css" rel="stylesheet" />
 </head>
 
-<body >
+<body data-turbo="false">
   <header>
     <!-- NAV BAR     -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
@@ -23,6 +23,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- reste -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -37,13 +38,19 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="/users/new">Inscription</a></li>
+                <li><a class="dropdown-item" href="/sessions/new">Connexion</a></li>
                 <li><a class="dropdown-item" href="/team">La Team XoXo</a></li>
                 <li><a class="dropdown-item" href="/contact">Contact</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
+            <% if logged_in? == true %>
+            <li>
+              <%= button_to "Se déconnecter", session_path(session.id), method: :delete, class: "nav-link danger",{ confirm: "Are you sure?" } %>
+            </li>
+            <% end %>
           </ul>
-        </div>
+        </div>  
       </div>
     </nav>
   </header>

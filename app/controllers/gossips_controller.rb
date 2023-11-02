@@ -14,6 +14,7 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(content: params[:content], title: params[:title], user_id: User.all.sample.id)
+    @gossip.user = User.find_by(id: session[:user_id])
     if @gossip.save
       flash[:success] = "Xoxo Gossip saved successfully"
       redirect_to "/"
@@ -25,8 +26,6 @@ class GossipsController < ApplicationController
 
   def edit
     @gossip = Gossip.find(params[:id])
-    puts "------------------------------------------------"
-    puts @gossip.title
   end
 
   def update

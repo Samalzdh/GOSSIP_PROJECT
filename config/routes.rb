@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
 
   root to: 'public#index'
   get '/contact' , to: 'public#contact'
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   resources :gossips
   resources :users
   resources :cities
+  resources :sessions, only: [:new, :create, :destroy]
+
 
   resources :users do
     resources :gossips

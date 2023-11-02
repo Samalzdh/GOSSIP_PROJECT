@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @gossips = @user.gossips
+    @city = City.find(@user.city_id).name
 
   end
 
@@ -20,14 +21,16 @@ class UsersController < ApplicationController
       email: params[:email],
       age: params[:age],
       description: params[:description],
-      city: params[:city]
+      city_id: params[:city_id] || nil,
+      password: params[:password]
     )
     if @user.save
+      log_in(@user)
       flash[:success] = "Utilisateur bien créé"
-      redirect_to show_user_path(@user) # Assuming you have a show_user route
+      redirect_to user_path(@user) 
     else
       flash[:alert] = "Utilisateur non créé"
-      redirect_to root_path
+      redirect_to '/'
     end
   end
 
@@ -39,10 +42,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Utilisateur mis à jour"
-      redirect_to show_user_path(@user) # Assuming you have a show_user route
+      redirect_to show_user_path(@user) 
     else
       flash[:alert] = "Mise à jour de l'utilisateur échouée"
-      redirect_to edit_user_path(@user) # Assuming you have an edit_user route
+      redirect_to edit_user_path(@user) 
     end
   end
 
@@ -55,6 +58,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :description, :city)
+    params.require(:user).permit(:first_name, :last_name, :email, :description, :city, :password)
   end
 end
