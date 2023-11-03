@@ -38,15 +38,17 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <% if logged_in? == false %>
                 <li><a class="dropdown-item" href="/users/new">Inscription</a></li>
                 <li><a class="dropdown-item" href="/sessions/new">Connexion</a></li>
+                <% end %>
                 <li><a class="dropdown-item" href="/team">La Team XoXo</a></li>
                 <li><a class="dropdown-item" href="/contact">Contact</a></li>
               </ul>
             </li>
             <% if logged_in? == true %>
             <li>
-              <%= button_to "Se déconnecter", session_path(session.id), method: :delete, class: "nav-link danger",{ confirm: "Are you sure?" } %>
+              <%= button_to "Se déconnecter", session_path(session.id), method: :delete, class: "nav-link danger" %>
             </li>
             <% end %>
           </ul>

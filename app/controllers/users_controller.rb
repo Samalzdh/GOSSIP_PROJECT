@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @gossips = @user.gossips
     @city = City.find(@user.city_id).name
+  
 
   end
 
@@ -15,13 +16,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(
+      @user = User.new(
       first_name: params[:first_name],
       last_name: params[:last_name],
       email: params[:email],
       age: params[:age],
       description: params[:description],
-      city_id: params[:city_id] || nil,
+      city_id: params[:city],
       password: params[:password]
     )
     if @user.save
@@ -56,8 +57,12 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def like?(gossip)
+    likes.exists?(gossip: gossip)
+  end
+
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :description, :city, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :description, :city, :password , :age)
   end
-end
+end  
