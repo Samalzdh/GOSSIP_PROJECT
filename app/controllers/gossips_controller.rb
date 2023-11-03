@@ -43,16 +43,15 @@ class GossipsController < ApplicationController
   end
 
   def like
-  @gossip = Gossip.find(params[:id])
-  current_user.Like.create(gossip: params[:gossip])
-  redirect_to gossips_path, notice: "oh u like it hun"
+    @gossip = Gossip.find(params[:id])
+    current_user.like.create(gossip: params[:gossip])
+    redirect_to gossips_path, notice: "oh u like it hun"
   end
 
-  def dislike
+  def unlike
     @gossip = Gossip.find(params[:id])
     current_user.Like.find(gossip: params[:gossip]).destroy
     redirect_to gossips_path, notice: "Ah finalement non ?"
-
   end
 
   private

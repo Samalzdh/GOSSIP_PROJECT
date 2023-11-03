@@ -32,7 +32,7 @@
         <div><%= text_field_tag 'email', @user.email, class: "form-control",required: true %><br></div>
 
         <div><%= label_tag 'Choisis ton mot de passe :' %></div>
-        <div><%= text_field_tag 'password', @user.password, class: "form-control",required: true %><br>
+        <div><%= password_field_tag 'password', @user.password, class: "form-control",required: true %><br>
           <div class="invalid-feedback">
             Please enter a valid password (at least 6 characters).
           </div>
