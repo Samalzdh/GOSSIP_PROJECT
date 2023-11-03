@@ -54,7 +54,7 @@ group :development do
   gem "web-console"
 
 group :production do
-  gem 'pg', '>= 1.1'
+  gem 'pg'
 end
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
